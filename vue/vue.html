@@ -1,6 +1,6 @@
 js：
 animate.css
-
+toFixed() 方法可把 Number 四舍五入为指定小数位数的数字
 {{支持三元运算}}
 
  指令：所有指令都是以 v-开头
@@ -129,6 +129,57 @@ this.arr.sort(function (a,b) {
   this.arr.unshift(100，120);==>数组前端添加元素
  this.arr.splice(0,1);==>指定从0开始删除1个元素
  this.arr.splice(0,1,90);==>指定从0开始更改1个元素为90
+
+
+every()条件成立返回true
+检测数组 ages 的所有元素是否都大于 18 :
+var ages = [32, 33, 16, 40];
+
+function checkAdult(age) {
+    return age >= 18;
+}
+
+function myFunction() {
+    document.getElementById("demo").innerHTML = ages.every(checkAdult);
+}
+输出结果为:
+false
+
+
+计算数组元素相加后的总和：
+var numbers = [65, 44, 12, 4];
+ 
+function getSum(total, num) {
+    return total + num;
+}
+function myFunction(item) {
+    document.getElementById("demo").innerHTML = numbers.reduce(getSum,0); 0:表示初始值为0
+}
+输出结果：
+125
+
+var result = [
+  {
+    subject: 'math',
+    score: 88
+  },
+  {
+    subject: 'chinese',
+    score: 95
+  },
+  {
+    subject: 'english',
+    score: 80
+  }
+];
+
+var sum = result.reduce(function(prev, cur) {
+  return cur.score + prev;
+}, 0);
+
+
+
+
  
 不能导致原数组的变化
 非变异方法
@@ -163,10 +214,48 @@ v-for循环
 <div @mouseup='fn($event)'></div>
 <div @keyup=''></div>
 <div @keydown=''></div>
+<div @change=''></div>
 ```
 $event:属性
+	```
+冒泡事件:阻止
+<div class="btn" id="app">
+        <button class="btn" @click="p">p
+            <button class="btn" @click.stop="c">c</button>
+        </button>
+    </div>
 
-
+捕获:capture
+<div class="btn" id="app">
+        <button class="btn" @click.capture="p">p
+            <button class="btn" @click="c">c</button>
+        </button>
+    </div>
+	
+阻止默认行为: prevent
+	
+	<div class="btn" id="app">
+        <button class="btn" @click.prevent="p">p
+            <button class="btn" @click="c">c</button>
+        </button>
+    </div>
+	
+触发一次 .once
+	<div class="btn" id="app">
+        <button class="btn" @click.once="p">p
+            <button class="btn" @click="c">c</button>
+        </button>
+    </div>
+	
+	
+点击自己处罚    .self
+	<div class="btn" id="app">
+        <button class="btn" @click.self="p">p
+            <button class="btn" @click="c">c</button>
+        </button>
+    </div>
+	
+```
 
 ```
 <!DOCTYPE html>
@@ -436,12 +525,93 @@ vue的框架 iview
 
 外面使用{{}},里面使用:
 	
+过滤器：
+	
+{{data| toFixed}}
+{{data| toFixed（2}} 
+可以传参数：
+input:表示管道符号前面的内容，n:表示传递的参数
+toFixed:function (input , n) {
+                return n;
+            },
+	
+	
+new Vue({
+
+        el:'#app',
+        data:{
+
+        },
+        filters:{
+          //自定义过滤器 n = data
+            toFixed:function (n) {
+                return n;
+            },
+
+        },
+        method: {
+
+        }
+    });
+
+	
+删除元素用过滤方法 this.arr = this.arr.filter(item=>item!==p);不等于p的保留，p为json对象，比较的是地址
+	
+computed:属性方法	
+
+computed:{
+	checkall:{
+			get(){
+				
+			     },
+			set(val){  val:true false  checkbox中的
+			     }
+		}
+	}
 	
 	
 	
+动画:
 	
+``` 
+	 默认：   
+	.v-enter{
+            opacity: 0;
+        }
+        .v-enter-active{
+            transition: 1s linear;
+        }
+        .v-leave-active{
+            opacity: 0;
+            transition: 1s linear;
+        }
 	
+<transition>
+    <button  ></button>
+</transition>
 	
+	 指定：   
+	
+	.jw-enter{
+            opacity: 0;
+        }
+        .jw-enter-active{
+            transition: 1s linear;
+        }
+        .jw-leave-active{
+            opacity: 0;
+            transition: 1s linear;
+        }
+<transition name='jw'>
+    <button  ></button>
+</transition>	
+```	
+animate.css
+class = 'animated'必备属性
+	
+<transition enter-active-class='animated fadeInRightBig' leave-active-class='animated fadeOutLeftBig'>
+    <button  ></button>
+</transition>	
 	
 	
 	
