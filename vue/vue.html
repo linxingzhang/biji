@@ -1,0 +1,432 @@
+js：
+animate.css
+
+{{支持三元运算}}
+
+ 指令：所有指令都是以 v-开头
+ v-cloak==>所有{{}}都不闪
+ style{
+ [v-cloak]{display:none}
+ }
+ 
+ v-text==>{{}}
+```
+ <div  v-text='msg'></div>
+```
+
+  v-html==>{{{}}}
+```
+  <div  v-html='msg'></div>
+```
+
+数据渲染一次，不用实时更新
+```
+ <div  v-once>{{msg}}</div>
+```
+
+
+表单元素 from中：value selected checked 属性都没有意思，默认忽略
+
+input checkbox textare radio select
+
+v-model绑定数据
+
+自动接受value数值，多个数值放入数组中
+```
+<input type'checkbox' value = 'xxx' v-model="value"/>
+<input type'checkbox' value = 'xxx' v-model="value"/>
+<input type'checkbox' value = 'xxx' v-model="value"/>
+checkbox中：v-model是数组  radio中v-model是变量
+ new Vue({
+            el:"#app",
+            data:{
+            
+                value:[]
+            }
+        }
+```
+
+)
+
+实例：
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <title>vue</title>
+</head>
+<body>
+    <div id="app">
+        {{value}}
+        <input v-model="value"/>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                value:'hello world'
+            }
+        })
+    </script>
+</body>
+</html>
+
+```
+数据响应的变化
+
+vue会循环data中的数据,使用变量时候，
+先要初始化，否则新加的属性不会导致页面刷新
+
+给对象添加响应式的数据变化
+vm.$set(vm.a,scholl,1);==> a:{school:1}
+
+替换原来对象
+vm.a = {school:1}==>a:{school:1}
+
+
+```
+<div div='app'> 
+	{{msg}}
+    {{a.school}}
+
+</div>
+ <script>
+        new Vue({
+            el:"#app",
+            data:{
+                msg:'hello world',
+                a:{}
+            },
+            methods:{
+            }
+        })
+    </script>
+
+```
+
+
+
+
+取数组某个值
+{{arr[0]}}
+修改数组的某个值
+wm.$set(arr,0,2);==>arr[0] = 2
+
+数组的变异方法
+pop  push shift unshift sort reverse splice
+
+倒叙
+vm.arr.reverse()
+vm.arr.push(90)==>从后端添加
+vm.arr.pop()==>从后端删除
+this.arr.sort(function (a,b) {
+                        return a-b;
+                    });==>数组排序
+                    
+  this.arr.shift();==>从前端删除 
+  this.arr.unshift(100，120);==>数组前端添加元素
+ this.arr.splice(0,1);==>指定从0开始删除1个元素
+ this.arr.splice(0,1,90);==>指定从0开始更改1个元素为90
+ 
+不能导致原数组的变化
+非变异方法
+filter map
+
+过滤元素大于2的数值
+  computed:{
+          arrshow:function () {
+                return this.arr.filter(function (t) {
+                      return t>2;
+                    });
+                }
+            }
+
+concat(1,2)  concat(arr1,arr2)：连接数组
+arrayObject.slice(start,end)：截取数组
+
+v-for循环
+
+```
+<div v-for='i in intems'>{{i}}</div>
+<div v-for='(value ,key,index) in json'>{{}}</div>
+<div v-for='(value,index) in arr'>{{i}}</div>
+```
+
+
+1.事件处理：
+
+```
+<div @click=''><div>
+<div @mousedown=''><div>
+<div @mouseup='fn($event)'></div>
+<div @keyup=''></div>
+<div @keydown=''></div>
+```
+$event:属性
+
+
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <title>vue</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <button @click = 'showMe'>showMe</button>
+    </div>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                msg:'hello world'
+            },
+            methods:{
+                showMe:function () {
+                    this.msg = this.msg.split("").reverse().join("");
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+
+```
+from中的双向绑定
+v-model
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <title>vue</title>
+</head>
+<body>
+    <div id="app">
+        {{msg}}
+        <button @click = 'showMe'>showMe</button>
+        <input  v-model="msg"/>
+    </div>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                msg:'hello world'
+            },
+            methods:{
+                showMe:function () {
+                    this.msg = this.msg.split("").reverse().join("");
+                }
+            }
+        })
+    </script>
+</body>
+</html>
+
+```
+计算属性
+computed
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <title>vue</title>
+</head>
+<body>
+    <div id="app">
+
+        <input  v-model="n1"/> + <input  v-model="n2"/> =  <input  v-model="sum"/>
+    </div>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                n1:10,
+                n2:10,
+            },
+            methods:{
+                showMe:function () {
+                    this.msg = this.msg.split("").reverse().join("");
+                }
+            },
+            computed:{
+                sum:function () {
+                    return parseInt(this.n1)+parseInt(this.n2);
+                }
+
+            }
+        })
+    </script>
+</body>
+</html>
+
+```
+
+
+全局组件
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <title>vue</title>
+</head>
+<body>
+    <div id="app">
+
+        <tdd></tdd>
+
+    </div>
+    <template id="todo">
+        <h1>todo</h1>
+    </template>
+
+    <script>
+        Vue.component("tdd",{
+            template:"#todo"
+        });
+        new Vue({
+            el:"#app",
+            data:{
+
+            },
+            methods:{
+
+            },
+            computed:{
+
+            }
+        })
+    </script>
+</body>
+</html>
+
+```
+
+局部组件
+
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <title>vue</title>
+</head>
+<body>
+    <div id="app">
+
+        <tdd></tdd>
+
+    </div>
+    <template id="todo">
+        <h1>too</h1>
+    </template>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+
+            },
+           components:{
+              tdd:{
+                  template:"#todo"
+              }
+            },
+            methods:{
+
+            },
+            computed:{
+
+            }
+        })
+    </script>
+</body>
+</html>
+
+```
+
+子组件访问父组件的属性，注意要用 v-bind绑定
+
+
+```
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="vue.js"></script>
+    <title>vue</title>
+</head>
+<body>
+    <div id="app">
+        <tdd :info="json"></tdd>
+    </div>
+    <template id="todo">
+        <div>
+            <h1>too</h1>
+            <h1>{{info}}</h1>
+        </div>
+
+    </template>
+
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+                items:["a",'b','c','d'],
+                json:{a:'q',b:'w'},
+                a:false
+            },
+            components:{
+              tdd:{
+                  template:"#todo",
+                  data:function () {
+                      return {
+                          son:'son'
+                      }
+                  },
+                  props:['info']
+              }
+            },
+            methods:{
+
+            },
+            computed:{
+
+            }
+        })
+    </script>
+</body>
+</html>
+
+```
+
+created(){}==>数据初始化后调用，钩子函数 ajax请求写这里
+axios:基于promise的
+
+```
+var _this = this;
+axios.get('a.text').then(function(res){
+sucess
+res.data
+},function(error){
+	error
+})
+```
