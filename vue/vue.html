@@ -1,10 +1,10 @@
-js£º
+jsï¼š
 animate.css
 
-{{Ö§³ÖÈıÔªÔËËã}}
+{{æ”¯æŒä¸‰å…ƒè¿ç®—}}
 
- Ö¸Áî£ºËùÓĞÖ¸Áî¶¼ÊÇÒÔ v-¿ªÍ·
- v-cloak==>ËùÓĞ{{}}¶¼²»ÉÁ
+ æŒ‡ä»¤ï¼šæ‰€æœ‰æŒ‡ä»¤éƒ½æ˜¯ä»¥ v-å¼€å¤´
+ v-cloak==>æ‰€æœ‰{{}}éƒ½ä¸é—ª
  style{
  [v-cloak]{display:none}
  }
@@ -19,24 +19,24 @@ animate.css
   <div  v-html='msg'></div>
 ```
 
-Êı¾İäÖÈ¾Ò»´Î£¬²»ÓÃÊµÊ±¸üĞÂ
+æ•°æ®æ¸²æŸ“ä¸€æ¬¡ï¼Œä¸ç”¨å®æ—¶æ›´æ–°
 ```
  <div  v-once>{{msg}}</div>
 ```
 
 
-±íµ¥ÔªËØ fromÖĞ£ºvalue selected checked ÊôĞÔ¶¼Ã»ÓĞÒâË¼£¬Ä¬ÈÏºöÂÔ
+è¡¨å•å…ƒç´  fromä¸­ï¼švalue selected checked å±æ€§éƒ½æ²¡æœ‰æ„æ€ï¼Œé»˜è®¤å¿½ç•¥
 
 input checkbox textare radio select
 
-v-model°ó¶¨Êı¾İ
+v-modelç»‘å®šæ•°æ®
 
-×Ô¶¯½ÓÊÜvalueÊıÖµ£¬¶à¸öÊıÖµ·ÅÈëÊı×éÖĞ
+è‡ªåŠ¨æ¥å—valueæ•°å€¼ï¼Œå¤šä¸ªæ•°å€¼æ”¾å…¥æ•°ç»„ä¸­
 ```
 <input type'checkbox' value = 'xxx' v-model="value"/>
 <input type'checkbox' value = 'xxx' v-model="value"/>
 <input type'checkbox' value = 'xxx' v-model="value"/>
-checkboxÖĞ£ºv-modelÊÇÊı×é  radioÖĞv-modelÊÇ±äÁ¿
+checkboxä¸­ï¼šv-modelæ˜¯æ•°ç»„  radioä¸­v-modelæ˜¯å˜é‡
  new Vue({
             el:"#app",
             data:{
@@ -48,7 +48,7 @@ checkboxÖĞ£ºv-modelÊÇÊı×é  radioÖĞv-modelÊÇ±äÁ¿
 
 )
 
-ÊµÀı£º
+å®ä¾‹ï¼š
 ```
 <!DOCTYPE html>
 <html lang="en">
@@ -74,15 +74,15 @@ checkboxÖĞ£ºv-modelÊÇÊı×é  radioÖĞv-modelÊÇ±äÁ¿
 </html>
 
 ```
-Êı¾İÏìÓ¦µÄ±ä»¯
+æ•°æ®å“åº”çš„å˜åŒ–
 
-vue»áÑ­»·dataÖĞµÄÊı¾İ,Ê¹ÓÃ±äÁ¿Ê±ºò£¬
-ÏÈÒª³õÊ¼»¯£¬·ñÔòĞÂ¼ÓµÄÊôĞÔ²»»áµ¼ÖÂÒ³ÃæË¢ĞÂ
+vueä¼šå¾ªç¯dataä¸­çš„æ•°æ®,ä½¿ç”¨å˜é‡æ—¶å€™ï¼Œ
+å…ˆè¦åˆå§‹åŒ–ï¼Œå¦åˆ™æ–°åŠ çš„å±æ€§ä¸ä¼šå¯¼è‡´é¡µé¢åˆ·æ–°
 
-¸ø¶ÔÏóÌí¼ÓÏìÓ¦Ê½µÄÊı¾İ±ä»¯
+ç»™å¯¹è±¡æ·»åŠ å“åº”å¼çš„æ•°æ®å˜åŒ–
 vm.$set(vm.a,scholl,1);==> a:{school:1}
 
-Ìæ»»Ô­À´¶ÔÏó
+æ›¿æ¢åŸæ¥å¯¹è±¡
 vm.a = {school:1}==>a:{school:1}
 
 
@@ -109,32 +109,32 @@ vm.a = {school:1}==>a:{school:1}
 
 
 
-È¡Êı×éÄ³¸öÖµ
+å–æ•°ç»„æŸä¸ªå€¼
 {{arr[0]}}
-ĞŞ¸ÄÊı×éµÄÄ³¸öÖµ
+ä¿®æ”¹æ•°ç»„çš„æŸä¸ªå€¼
 wm.$set(arr,0,2);==>arr[0] = 2
 
-Êı×éµÄ±äÒì·½·¨
+æ•°ç»„çš„å˜å¼‚æ–¹æ³•
 pop  push shift unshift sort reverse splice
 
-µ¹Ğğ
+å€’å™
 vm.arr.reverse()
-vm.arr.push(90)==>´Óºó¶ËÌí¼Ó
-vm.arr.pop()==>´Óºó¶ËÉ¾³ı
+vm.arr.push(90)==>ä»åç«¯æ·»åŠ 
+vm.arr.pop()==>ä»åç«¯åˆ é™¤
 this.arr.sort(function (a,b) {
                         return a-b;
-                    });==>Êı×éÅÅĞò
+                    });==>æ•°ç»„æ’åº
                     
-  this.arr.shift();==>´ÓÇ°¶ËÉ¾³ı 
-  this.arr.unshift(100£¬120);==>Êı×éÇ°¶ËÌí¼ÓÔªËØ
- this.arr.splice(0,1);==>Ö¸¶¨´Ó0¿ªÊ¼É¾³ı1¸öÔªËØ
- this.arr.splice(0,1,90);==>Ö¸¶¨´Ó0¿ªÊ¼¸ü¸Ä1¸öÔªËØÎª90
+  this.arr.shift();==>ä»å‰ç«¯åˆ é™¤ 
+  this.arr.unshift(100ï¼Œ120);==>æ•°ç»„å‰ç«¯æ·»åŠ å…ƒç´ 
+ this.arr.splice(0,1);==>æŒ‡å®šä»0å¼€å§‹åˆ é™¤1ä¸ªå…ƒç´ 
+ this.arr.splice(0,1,90);==>æŒ‡å®šä»0å¼€å§‹æ›´æ”¹1ä¸ªå…ƒç´ ä¸º90
  
-²»ÄÜµ¼ÖÂÔ­Êı×éµÄ±ä»¯
-·Ç±äÒì·½·¨
+ä¸èƒ½å¯¼è‡´åŸæ•°ç»„çš„å˜åŒ–
+éå˜å¼‚æ–¹æ³•
 filter map
 
-¹ıÂËÔªËØ´óÓÚ2µÄÊıÖµ
+è¿‡æ»¤å…ƒç´ å¤§äº2çš„æ•°å€¼
   computed:{
           arrshow:function () {
                 return this.arr.filter(function (t) {
@@ -143,10 +143,10 @@ filter map
                 }
             }
 
-concat(1,2)  concat(arr1,arr2)£ºÁ¬½ÓÊı×é
-arrayObject.slice(start,end)£º½ØÈ¡Êı×é
+concat(1,2)  concat(arr1,arr2)ï¼šè¿æ¥æ•°ç»„
+arrayObject.slice(start,end)ï¼šæˆªå–æ•°ç»„
 
-v-forÑ­»·
+v-forå¾ªç¯
 
 ```
 <div v-for='i in intems'>{{i}}</div>
@@ -155,7 +155,7 @@ v-forÑ­»·
 ```
 
 
-1.ÊÂ¼ş´¦Àí£º
+1.äº‹ä»¶å¤„ç†ï¼š
 
 ```
 <div @click=''><div>
@@ -164,7 +164,7 @@ v-forÑ­»·
 <div @keyup=''></div>
 <div @keydown=''></div>
 ```
-$event:ÊôĞÔ
+$event:å±æ€§
 
 
 
@@ -199,7 +199,7 @@ $event:ÊôĞÔ
 </html>
 
 ```
-fromÖĞµÄË«Ïò°ó¶¨
+fromä¸­çš„åŒå‘ç»‘å®š
 v-model
 ```
 <!DOCTYPE html>
@@ -233,7 +233,7 @@ v-model
 </html>
 
 ```
-¼ÆËãÊôĞÔ
+è®¡ç®—å±æ€§
 computed
 
 ```
@@ -276,7 +276,7 @@ computed
 ```
 
 
-È«¾Ö×é¼ş
+å…¨å±€ç»„ä»¶
 
 ```
 <!DOCTYPE html>
@@ -318,7 +318,7 @@ computed
 
 ```
 
-¾Ö²¿×é¼ş
+å±€éƒ¨ç»„ä»¶
 
 
 ```
@@ -363,7 +363,7 @@ computed
 
 ```
 
-×Ó×é¼ş·ÃÎÊ¸¸×é¼şµÄÊôĞÔ£¬×¢ÒâÒªÓÃ v-bind°ó¶¨
+å­ç»„ä»¶è®¿é—®çˆ¶ç»„ä»¶çš„å±æ€§ï¼Œæ³¨æ„è¦ç”¨ v-bindç»‘å®š
 
 
 ```
@@ -418,8 +418,8 @@ computed
 
 ```
 
-created(){}==>Êı¾İ³õÊ¼»¯ºóµ÷ÓÃ£¬¹³×Óº¯Êı ajaxÇëÇóĞ´ÕâÀï
-axios:»ùÓÚpromiseµÄ
+created(){}==>æ•°æ®åˆå§‹åŒ–åè°ƒç”¨ï¼Œé’©å­å‡½æ•° ajaxè¯·æ±‚å†™è¿™é‡Œ
+axios:åŸºäºpromiseçš„
 
 ```
 var _this = this;
@@ -430,3 +430,35 @@ res.data
 	error
 })
 ```
+	
+vueçš„æ¡†æ¶ iview
+	
+
+å¤–é¢ä½¿ç”¨{{}},é‡Œé¢ä½¿ç”¨:
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
