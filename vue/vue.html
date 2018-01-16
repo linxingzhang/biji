@@ -248,7 +248,7 @@ $event:属性
     </div>
 	
 	
-点击自己处罚    .self
+点击自己触发   .self
 	<div class="btn" id="app">
         <button class="btn" @click.self="p">p
             <button class="btn" @click="c">c</button>
@@ -557,19 +557,55 @@ new Vue({
 	
 删除元素用过滤方法 this.arr = this.arr.filter(item=>item!==p);不等于p的保留，p为json对象，比较的是地址
 	
-computed:属性方法	
+computed:属性方法  不支持异步操作      
 
 computed:{
 	checkall:{
 			get(){
 				
 			     },
-			set(val){  val:true false  checkbox中的
+			set(val){  val:true false  checkbox中的 form表单
 			     }
 		}
 	}
 	
+```
+<div class="btn" id="app">
+	<input  type="checkbox" v-model="add"/>全选
+        <input v-for="it in arr"  type="checkbox" v-model="it.score"/>
+</div>
 	
+	
+computed:{
+	add:{
+	set:function () {
+	//当全选按钮，选择时会调用该函数，把选项全部设置为true
+	    this.arr.forEach(function (t) {
+		t.score = true;
+	    })
+	},
+	//score发生改变时候调用该函数
+	//如果两个radio都选，则全选，有一个不选，则不全选
+	get:function () {
+	    console.log('tt')
+	//数组里score有一个为false，则返回false，全部为true,返回true
+	    return this.arr.every(function (t) {
+		return  t.score;
+	    })
+	}
+    }
+},
+	
+	```
+	
+watch:观察者 支持异步操作
+watch:{
+	a:function(new ,old){
+		new:新值
+	        old:旧值
+		a：属性发生变化，时候执行
+	}
+      }
 	
 动画:
 	
