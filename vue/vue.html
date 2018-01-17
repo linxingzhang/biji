@@ -557,7 +557,12 @@ new Vue({
 	
 删除元素用过滤方法 this.arr = this.arr.filter(item=>item!==p);不等于p的保留，p为json对象，比较的是地址
 	
-computed:属性方法  不支持异步操作      
+computed:属性方法  不支持异步操作  
+computed：｛
+	checkall（）｛
+	//默认调用get方法
+	｝
+	｝
 
 computed:{
 	checkall:{
@@ -598,12 +603,27 @@ computed:{
 	
 	```
 	
-watch:观察者 支持异步操作
+watch:观察者 支持异步操作 默认只能监控一层    
+<input v-model='a'>
+data:{
+	a:''
+	}
 watch:{
+	//监视a变量
 	a:function(new ,old){
 		new:新值
 	        old:旧值
 		a：属性发生变化，时候执行
+	}
+      }
+
+监控多层 深度监控
+	watch:{
+	//监视a变量
+	a:{
+		handler:function(news ,olds){
+		},
+		deep:true
 	}
       }
 	
@@ -648,6 +668,64 @@ class = 'animated'必备属性
 <transition enter-active-class='animated fadeInRightBig' leave-active-class='animated fadeOutLeftBig'>
     <button  ></button>
 </transition>	
+	
+if条件判断
+v-if  v-else v-else-if
+<template v-if>
+	
+</template>
+v-show: template不起作用
+默认复用相同的dom,加 key 不复用  :key 动态绑定
+	
+
+                              	
+v-bind：动态绑定属性
+class:属性
+	
+<div :class= '{key:true,y:true}' ></div>	
+<div :class= '[class1,class2,{key:true}]' ></div>	
+	
+:style和class相同  不过是驼峰命名	
+	
+例如：
+	data:{
+	 sty1:{backgroundColor:'red'},
+	sty2:{color:'red}
+	  }
+	
+	<div :style=[sty1,sty2]></div>
+	
+	
+实现单页开发的方式：
+   通过hash记录跳转路径    开发时候用 router 默认是
+   浏览器自带的方式 history	histroy.pushState('','','/d')  上线时候用 mode :'histroy'
+	
+自定义指令 directive
+
+   <div v-color ='flag'> </div>	
+	vue中
+directives:{
+	color:function(el,bings){
+	
+		bings.value是flag的数值
+	}  
+	
+	}
+	
+ 本地存储
+	         
+ localStorage.setItem('data',JSON.strigify(this.tools));  	watch   中
+JSON.parse(localStorage.getItem('data'));	created中
+	
+	
+	
+	                                
+	
+	
+	
+	
+	
+	
 	
 	
 	
